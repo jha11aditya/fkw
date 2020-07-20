@@ -1,7 +1,7 @@
 import sys
 import os
 
-targ_ext = "html,js,htm,xml"
+targ_ext = "html,js,htm,xml,asp,aspx,jsp,jspx,dhtml,php,php3,rss,cgi,xhtml,erb,rjs,rb"
 domain_url = sys.argv[1]
 dname = domain_url.split("://")[1]
 
@@ -27,7 +27,7 @@ while True:
     elif str(inp) == "\q":
         break
     else:    
-        stream = os.popen('grep --color=always -nR "' + inp + '" ' + dname)
+        stream = os.popen('grep --color=always -InRHPo ".{0,3}' + inp + '.{0,50}" ' + dname)
         print(stream.read())
 
 
